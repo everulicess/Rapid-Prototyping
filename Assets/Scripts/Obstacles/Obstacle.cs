@@ -1,46 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum MyStates
-{
-    Attacking,
-    Resetting
-}
 public class Obstacle : MonoBehaviour
 {
-    MyStates currentState;
+    [Header("Times")]
+    [SerializeField] float attackTime = 10f;
+    [SerializeField] float retrackTime = 5f;
+    
     [SerializeField] GameObject model;
     GameObject ground;
     Vector3 groundPosition;
     Vector3 originPosition;
+    Vector3 destinyPosition;
 
-    // Start is called before the first frame update
+    bool isDoneAttacking;
+    float distance;
+
     void Start()
     {
         originPosition = transform.position;
         ground = GameObject.Find("Ground");
         groundPosition = ground.transform.position;
-        currentState = MyStates.Attacking;
-    }
+        destinyPosition = new Vector3(transform.position.x, groundPosition.y + 0.5f, transform.position.z);
 
-    // Update is called once per frame
+        distance = Vector3.Distance(destinyPosition, originPosition);
+
+    }
     void Update()
     {
-        switch (currentState)
-        {
-            case MyStates.Attacking:
-                transform.position += Vector3.down * Time.deltaTime;
-                if (transform.position.y <= groundPosition.y)
-                    currentState = MyStates.Resetting;
-                break;
-            case MyStates.Resetting:
-                transform.position += Vector3.up * Time.deltaTime;
-                if (transform.position.y >= originPosition.y)
-                    currentState = MyStates.Attacking;
-                break;
-            default:
-                break;
-        }
+        ObstacleMovement();
     }
+    private void ObstacleMovement()
+    {
+        float time = (distance / (!isDoneAttacking ? attackTime : retrackTime)) * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, !isDoneAttacking ? destinyPosition : originPosition, time);
+
+        if (transform.position.y == (!isDoneAttacking ? destinyPosition.y : originPosition.y))
+            isDoneAttacking = !isDoneAttacking;
+    }
+
 }

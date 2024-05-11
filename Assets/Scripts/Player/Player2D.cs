@@ -18,7 +18,7 @@ public class Player2DMovement : MonoBehaviour
     void Update()
     {
         movementDirection = new(Input.GetAxisRaw("Horizontal"), 0, 0);
-        Debug.Log(characterController.isGrounded);
+        //Debug.Log(characterController.isGrounded);
 
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
