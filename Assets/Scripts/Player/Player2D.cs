@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player2DMovement : MonoBehaviour
+public class Player2D : MonoBehaviour
 {
     CharacterController characterController;
 
@@ -39,6 +39,15 @@ public class Player2DMovement : MonoBehaviour
     
         
         characterController.Move(movementDirection* Time.deltaTime);
+
+    }
+
+    public void Die()
+    {
+        characterController.enabled = false;
+        transform.position = new Vector3(0,1f,0);
+        Debug.Log($"Player dead");
+        characterController.enabled = true;
 
     }
 }

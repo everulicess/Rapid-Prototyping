@@ -41,4 +41,12 @@ public class Obstacle : MonoBehaviour
             isDoneAttacking = !isDoneAttacking;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        other.TryGetComponent(out Player2D player);
+        if (player!=null)
+        {
+            player.Die();
+        }
+    }
 }
