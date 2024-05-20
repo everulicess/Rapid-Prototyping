@@ -8,10 +8,12 @@ public class Player2D : MonoBehaviour
     CharacterController characterController;
 
     Vector3 movementDirection;
+    [SerializeField] float movementSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        characterController = GetComponent<CharacterController>();   
+        characterController = GetComponent<CharacterController>();
+        CameraFollow.Singleton.SetTarget(this.transform);
     }
 
     // Update is called once per frame
@@ -22,19 +24,31 @@ public class Player2D : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
+
         if (!characterController.isGrounded) 
             movementDirection.y -= (9.8f) * Time.deltaTime;
 
-        characterController.Move(movementDirection * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+        }
+        characterController.Move(movementDirection * movementSpeed*Time.deltaTime);
     }
-    
+    void Dash()
+    {
+        
+    }
+    void ApplyGravity()
+    {
+        if (characterController.isGrounded && characterController.velocity.y < 0.0f)
+        {
+        }
+    }
     void Jump()
     {
         if (!characterController.isGrounded)
             return;
-        //movementDirection.y = characterController.isGrounded && characterController.velocity.y < 0 ? 100f : 0f;
-        //characterController.Move(movementDirection * Time.deltaTime);
-
+        
         movementDirection.y = 20f;
     
         

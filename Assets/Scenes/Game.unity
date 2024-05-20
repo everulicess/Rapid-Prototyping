@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -260,6 +261,22 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f0d79e1cbd61c49bb33d180bf30349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 4
+  smoothSpeed: 5
+  camXRotationt: 0
+  camYRotation: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ddce8f80b61fe4cb0bdaed84a1f0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3
 --- !u!143 &1173144683
 CharacterController:
   m_ObjectHideFlags: 0
@@ -597,7 +615,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 2.1
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -612,6 +630,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3045745626577808899, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
+        type: 3}
+      propertyPath: attackTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045745626577808899, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
+        type: 3}
+      propertyPath: retrackTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7317752742337600332, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -818,6 +846,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3045745626577808899, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
+        type: 3}
+      propertyPath: attackTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045745626577808899, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
+        type: 3}
+      propertyPath: retrackTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7317752742337600332, guid: 1ecc37a6ed7f6854bbd27f766a0f32d9,
         type: 3}
       propertyPath: m_LocalPosition.x
