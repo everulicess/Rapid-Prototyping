@@ -45,8 +45,9 @@ public class Option : MonoBehaviour
     {
         if (isSelected)
         {
-            PlateGameplayManager.instance.SetSelectedWeapon(weapon);
-            Debug.Log($"{this.gameObject.transform.name}");
+            //PlateGameplayManager.instance.SetSelectedWeapon(weapon);
+            Events.OnWeaponSelected(weapon);
+            Debug.Log($"you've selected: a {this.gameObject.transform.name}");
         }
     }
 }

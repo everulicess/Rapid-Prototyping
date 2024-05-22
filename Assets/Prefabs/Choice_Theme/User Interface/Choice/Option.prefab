@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377431833307377132}
   - component: {fileID: 3190959126705191977}
+  - component: {fileID: -1438746017741469914}
   m_Layer: 5
   m_Name: Option
   m_TagString: Option
@@ -48,6 +49,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0a5855b29f4d304495d1266c49f31ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: 0
+--- !u!114 &-1438746017741469914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711913031346007844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad517bea60b4a2439018b7d68d27501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3294101439845642999

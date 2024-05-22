@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum ChoiceScenes
@@ -11,10 +13,34 @@ public enum ChoiceScenes
 }
 public class GameManager2 : MonoBehaviour
 {
-    public ChoiceScenes settingScenes;
+    List<ChoiceScenes> ScenesList = new();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Events.OnSceneFiished += OnSceneFinished;
+        foreach (ChoiceScenes item in Enum.GetValues(typeof(ChoiceScenes)))
+        {
+            ScenesList.Add(item);
+        }
+        DontDestroyOnLoad(this);
+    }
+    private void OnDestroy()
+    {
+        Events.OnSceneFiished -= OnSceneFinished;
+
+    }
+    private void OnSceneFinished(ChoiceScenes sceneDone)
+    {
+        if (ScenesList.Contains(sceneDone))
+            ScenesList.Remove(sceneDone);
+
+        SceneManager.LoadSceneAsync(nameof(MyScenes.Menu));
+        foreach (ChoiceScenes item in ScenesList)
+        {
+            Debug.Log(item);
+
+        }
+
     }
 
     // Update is called once per frame

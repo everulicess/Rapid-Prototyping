@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGaemMenu : MonoBehaviour
+public class InGameMenu : MonoBehaviour
 {
     [SerializeField] GameObject PauseMenuPanel;
     public void PauseMenuToggle()

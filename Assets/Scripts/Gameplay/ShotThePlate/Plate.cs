@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 enum Tags
 {
     Projectile
 }
 public class Plate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+     
+    float plateSpeed;
+    private void Start()
     {
-        
+        plateSpeed = Random.Range(3f, 7f);
     }
-
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * Time.deltaTime;
-        Destroy(this.gameObject, 5f);
-        Debug.Log(nameof(Tags.Projectile));
+        transform.position += Vector3.left * Time.deltaTime * plateSpeed;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(nameof(Tags.Projectile)))
-        {
-
-        }
+            Destroy(this.gameObject);
+    }
+    public void OnPltaeHit()
+    {
+        Destroy(this.gameObject);
+        Events.OnPlateDestroyed(true);
     }
 }

@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlateSpawneer : MonoBehaviour
 {
     [SerializeField] GameObject platePrefab;
-
+    private void Start()
+    {
+        InvokeRepeating(nameof(SpawnPlate), 1f, 3f);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -13,8 +16,7 @@ public class PlateSpawneer : MonoBehaviour
     }
     public void SpawnPlate()
     {
-        GameObject plate = Instantiate(platePrefab, transform.position, Quaternion.identity);
-        plate.transform.position += Vector3.left * 4f * Time.deltaTime;
-
+        Vector3 platePos = new(transform.position.x, Random.Range(transform.position.y - 3f, transform.position.y + 2f), transform.position.z);
+        GameObject plate = Instantiate(platePrefab, platePos, Quaternion.identity);
     }
 }

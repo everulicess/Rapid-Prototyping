@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public enum MyScenes
 {
-    StrtingMenu,
-    Game
+    Menu,
+    Count,
+    Setting_1
 }
 
 public class StartMenuManager : MonoBehaviour
