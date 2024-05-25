@@ -45,8 +45,9 @@ public class Option : MonoBehaviour
     {
         if (isSelected)
         {
-            //PlateGameplayManager.instance.SetSelectedWeapon(weapon);
-            Events.OnWeaponSelected(weapon);
+            OnWeaponSelectedEvent evt = new();
+            evt.selectedWeapon = weapon;
+            EventManager.Broadcast(evt);
             Debug.Log($"you've selected: a {this.gameObject.transform.name}");
         }
     }

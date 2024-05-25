@@ -17,7 +17,7 @@ public class GameManager2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Events.OnSceneFiished += OnSceneFinished;
+        EventManager.AddListener<OnSceneFinished>(OnSceneFinished);
         foreach (ChoiceScenes item in Enum.GetValues(typeof(ChoiceScenes)))
         {
             ScenesList.Add(item);
@@ -26,13 +26,12 @@ public class GameManager2 : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Events.OnSceneFiished -= OnSceneFinished;
-
+        EventManager.RemoveListener<OnSceneFinished>(OnSceneFinished);
     }
-    private void OnSceneFinished(ChoiceScenes sceneDone)
+    private void OnSceneFinished(OnSceneFinished evt)
     {
-        if (ScenesList.Contains(sceneDone))
-            ScenesList.Remove(sceneDone);
+        if (ScenesList.Contains(evt.finishedScene))
+            ScenesList.Remove(evt.finishedScene);
 
         SceneManager.LoadSceneAsync(nameof(MyScenes.Menu));
         foreach (ChoiceScenes item in ScenesList)

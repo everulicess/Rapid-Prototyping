@@ -15,38 +15,50 @@ public class PlateGameplayManager : MonoBehaviour
     public static PlateGameplayManager instance;
     public bool hasSelected;
     Options chosenWeapon { get; set; }
-    [SerializeField] GameObject RiflePrefab;
-    [SerializeField] GameObject MachinegunPrefab;
-    [SerializeField] GameObject SniperPrefab;
+
+    [SerializeField] Transform weaponPosition;
+
+    public static GameObject RiflePrefab;
+    public GameObject RiflePrefab_Inspector;
+    public static GameObject MachinegunPrefab;
+    public GameObject MachinegunPrefab_Inspector;
+    public static GameObject SniperPrefab;
+    public GameObject SniperPrefab_Inspector;
 
     int highScore = 0;
     private void Awake()
     {
+        RiflePrefab = RiflePrefab_Inspector;
+        MachinegunPrefab = MachinegunPrefab_Inspector;
+        SniperPrefab = SniperPrefab_Inspector;
         instance = this;
-        Events.OnPlateDestroyed += IncreaeScore;
-        Events.OnWeaponSelected += SetSelectedWeapon;
+        EventManager.AddListener<OnPlateBrokenEvent>(IncreaeScore);
+        EventManager.AddListener<OnWeaponSelectedEvent>(SetSelectedWeapon);
     }
     private void OnDestroy()
     {
-        Events.OnPlateDestroyed -= IncreaeScore;
-        Events.OnWeaponSelected -= SetSelectedWeapon;
+        EventManager.RemoveListener<OnPlateBrokenEvent>(IncreaeScore);
+        EventManager.RemoveListener<OnWeaponSelectedEvent>(SetSelectedWeapon);
+
     }
-    void IncreaeScore(bool isDestroyed)
+    void IncreaeScore(OnPlateBrokenEvent evt)
     {
-        if (!isDestroyed)
-            return;
-        highScore++;
+
+        highScore += evt.amountToIncrease;
         Debug.Log($"your highscore is: {highScore}");
-        if (highScore == 3&&SceneManager.GetActiveScene().name!= nameof(ChoiceScenes.Setting_1))
+        if (highScore >= 3 /*&& SceneManager.GetActiveScene().name!= nameof(ChoiceScenes.Setting_1)*/)
         {
-            Events.OnSceneFiished(ChoiceScenes.Setting_1);
+            OnSceneFinished _evt = new();
+            _evt.finishedScene = ChoiceScenes.Setting_1;
+            EventManager.Broadcast(_evt);
         }
     }
 
-    void SetSelectedWeapon(Options selected)
+    void SetSelectedWeapon(OnWeaponSelectedEvent evt)
     {
-        chosenWeapon = selected;
+        chosenWeapon = evt.selectedWeapon;
         Debug.Log($"your weapon is: {chosenWeapon}");
+        Instantiate(evt.WeaponPrefab, weaponPosition);
 
     }
     public GameObject SpawnWeapon()
