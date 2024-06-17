@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public enum ChoiceScenes
+public enum Minigames
 {
     Setting_1,
     Setting_2,
@@ -13,12 +13,12 @@ public enum ChoiceScenes
 }
 public class GameManager2 : MonoBehaviour
 {
-    List<ChoiceScenes> ScenesList = new();
+    List<Minigames> ScenesList = new();
     // Start is called before the first frame update
     void Awake()
     {
         EventManager.AddListener<OnSceneFinished>(OnSceneFinished);
-        foreach (ChoiceScenes item in Enum.GetValues(typeof(ChoiceScenes)))
+        foreach (Minigames item in Enum.GetValues(typeof(Minigames)))
         {
             ScenesList.Add(item);
         }
@@ -34,7 +34,7 @@ public class GameManager2 : MonoBehaviour
             ScenesList.Remove(evt.finishedScene);
 
         SceneManager.LoadSceneAsync(nameof(MyScenes.Menu));
-        foreach (ChoiceScenes item in ScenesList)
+        foreach (Minigames item in ScenesList)
         {
             Debug.Log(item);
         }

@@ -7,6 +7,6 @@ public class ScenarioSelector : MonoBehaviour
 {
     public void GoToScenario()
     {
-        SceneManager.LoadSceneAsync(nameof(ChoiceScenes.Setting_1));
+        SceneManager.LoadSceneAsync(nameof(Minigames.Setting_1));
     }
 }

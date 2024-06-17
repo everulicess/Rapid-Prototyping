@@ -58,17 +58,18 @@ public static class EventManager
 public static class Events
 {
     public static OnPlateBrokenEvent BrokenPlateEvent = new();
-    public static OnSceneFinished finishedSceneEvent = new();
+    public static OnSceneFinished FinishedSceneEvent = new();
     public static OnWeaponSelectedEvent WeaponSelectedEvent = new();
+    public static OnShopBuy ShopBuyEvent = new();
 }
 public class GameEvent { }
-public class OnPlateBrokenEvent:GameEvent
+public class OnPlateBrokenEvent : GameEvent
 {
     public int amountToIncrease;
 }
 public class OnSceneFinished : GameEvent
 {
-    public ChoiceScenes finishedScene;
+    public Minigames finishedScene;
 }
 public class OnWeaponSelectedEvent : GameEvent
 {
@@ -86,4 +87,8 @@ public class OnWeaponSelectedEvent : GameEvent
             };
         } 
     }
+}
+public class OnShopBuy : GameEvent
+{
+    public int Price;
 }

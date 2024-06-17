@@ -48,7 +48,7 @@ public class PlateGameplayManager : MonoBehaviour
         if (highScore >= 3)
         {
             OnSceneFinished _evt = new();
-            _evt.finishedScene = ChoiceScenes.Setting_1;
+            _evt.finishedScene = Minigames.Setting_1;
             EventManager.Broadcast(_evt);
         }
     }
