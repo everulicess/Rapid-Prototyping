@@ -37,7 +37,6 @@ public class GameManager2 : MonoBehaviour
         foreach (ChoiceScenes item in ScenesList)
         {
             Debug.Log(item);
-
         }
 
     }

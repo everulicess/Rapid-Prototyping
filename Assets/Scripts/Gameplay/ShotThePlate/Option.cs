@@ -25,9 +25,9 @@ public class Option : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkSelected();
+        CheckSelected();
     }
-    void checkSelected()
+    void CheckSelected()
     {
         isSelected = (thisButton.image.color == Color.white);
     }
@@ -39,7 +39,7 @@ public class Option : MonoBehaviour
         {
             item.image.color = Color.red;
         }
-        checkSelected();
+        CheckSelected();
     }
     private void OnDisable()
     {

@@ -17,21 +17,22 @@ public class PlateGameplayManager : MonoBehaviour
     Options chosenWeapon { get; set; }
 
     [SerializeField] Transform weaponPosition;
-
+#region WEAPON_PREFABS
     public static GameObject RiflePrefab;
     public GameObject RiflePrefab_Inspector;
     public static GameObject MachinegunPrefab;
     public GameObject MachinegunPrefab_Inspector;
     public static GameObject SniperPrefab;
     public GameObject SniperPrefab_Inspector;
+#endregion
 
     int highScore = 0;
     private void Awake()
     {
+        instance = this;
         RiflePrefab = RiflePrefab_Inspector;
         MachinegunPrefab = MachinegunPrefab_Inspector;
         SniperPrefab = SniperPrefab_Inspector;
-        instance = this;
         EventManager.AddListener<OnPlateBrokenEvent>(IncreaeScore);
         EventManager.AddListener<OnWeaponSelectedEvent>(SetSelectedWeapon);
     }
@@ -43,10 +44,8 @@ public class PlateGameplayManager : MonoBehaviour
     }
     void IncreaeScore(OnPlateBrokenEvent evt)
     {
-
         highScore += evt.amountToIncrease;
-        Debug.Log($"your highscore is: {highScore}");
-        if (highScore >= 3 /*&& SceneManager.GetActiveScene().name!= nameof(ChoiceScenes.Setting_1)*/)
+        if (highScore >= 3)
         {
             OnSceneFinished _evt = new();
             _evt.finishedScene = ChoiceScenes.Setting_1;
