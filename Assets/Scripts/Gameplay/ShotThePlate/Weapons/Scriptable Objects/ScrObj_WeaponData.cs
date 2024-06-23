@@ -10,6 +10,7 @@ public class ScrObj_WeaponData : ScriptableObject
     public GameObject bulletPrefab;
     [Header("Shooting Settings")]
     public int bulletsXShot;
+    public bool isAutomatic;
     [Header("Magazine Settings")]
     public int magazineSize;
     public float reloadTime;

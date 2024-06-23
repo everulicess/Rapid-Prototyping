@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlateSpawneer : MonoBehaviour
 {
     [SerializeField] GameObject platePrefab;
+    [SerializeField] float SpawnFrequence;
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnPlate), 1f, 3f);
+        InvokeRepeating(nameof(SpawnPlate), 1f, SpawnFrequence);
     }
     private void Update()
     {

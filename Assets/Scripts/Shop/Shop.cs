@@ -14,7 +14,6 @@ public class Shop : MonoBehaviour
     void Start()
     {
         ShopPanel.SetActive(false);
-        //EventManager.AddListener<OnShopBuy>(OnShopBuy);
     }
    
     public void OpenSection(int section)

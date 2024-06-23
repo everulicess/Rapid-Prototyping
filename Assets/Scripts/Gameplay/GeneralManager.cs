@@ -27,23 +27,34 @@ public class GeneralManager : MonoBehaviour
         EventManager.AddListener<OnScoreUpdate>(UpdateScore);
         EventManager.AddListener<OnMiniGameFinished>(MinigameFinihsed);
 
+        EventManager.AddListener<OnQuitGame>(QuitGame);
+
+    }
+
+    private void QuitGame(OnQuitGame obj)
+    {
+#if !UNITY_EDITOR
+        Application.Quit();
+#else
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
     private void MinigameFinihsed(OnMiniGameFinished evt)
     {
-        //Time.timeScale = evt.IsFinished ? 0 : 1;
         SceneManager.LoadScene(evt.Roulette.ToString());
     }
-
     private void UpdateScore(OnScoreUpdate evt)
     {
         Gold += evt.GoldIncrease;
     }
-
     private void OnDestroy()
     {
         EventManager.RemoveListener<OnShopBuy>(OnBuyShop);
         EventManager.RemoveListener<OnScoreUpdate>(UpdateScore);
+        EventManager.RemoveListener<OnMiniGameFinished>(MinigameFinihsed);
+
+        EventManager.RemoveListener<OnQuitGame>(QuitGame);
 
     }
     private void OnBuyShop(OnShopBuy evt)

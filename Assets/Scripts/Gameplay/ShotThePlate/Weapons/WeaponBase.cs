@@ -12,7 +12,10 @@ public class WeaponBase : MonoBehaviour
     protected int bulletsXShot;
     protected bool isReloading;
     protected float reloadTimeXBullet;
+    protected bool isAutomatic;
     #endregion
+
+    bool trigger;
     public virtual void Shoot()
     {
         if (isReloading)
@@ -65,10 +68,12 @@ public class WeaponBase : MonoBehaviour
         magazineSize = WeaponData.magazineSize;
         reloadTimeXBullet = WeaponData.reloadTimeXBullet;
         bulletsXShot = WeaponData.bulletsXShot;
+        isAutomatic = WeaponData.isAutomatic;
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        trigger = isAutomatic ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
+        if (trigger)
             Shoot();
         if (Input.GetKeyDown(KeyCode.R))
             Reload();

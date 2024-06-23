@@ -8,6 +8,19 @@ public class InGameMenu : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject PauseMenuPanel;
     [SerializeField] GameObject CreditsPanel;
+    public static InGameMenu Singleton;
+    private void Awake()
+    {
+        if (Singleton != null && Singleton != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Singleton = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     public void PauseMenuToggle()
     {
         PauseMenuPanel.SetActive(!PauseMenuPanel.activeInHierarchy);
@@ -16,11 +29,6 @@ public class InGameMenu : MonoBehaviour
     public void OnCreditsToggle()
     {
         CreditsPanel.SetActive(!CreditsPanel.activeInHierarchy);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -34,6 +42,7 @@ public class InGameMenu : MonoBehaviour
 
     public void OnQuitButton()
     {
-
+        OnQuitGame evt = new();
+        EventManager.Broadcast(evt);
     }
 }

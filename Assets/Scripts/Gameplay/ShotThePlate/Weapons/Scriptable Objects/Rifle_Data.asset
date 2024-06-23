@@ -15,5 +15,6 @@ MonoBehaviour:
   weapon: 0
   bulletPrefab: {fileID: 0}
   bulletsXShot: 2
+  isAutomatic: 1
   magazineSize: 10
   reloadTime: 3

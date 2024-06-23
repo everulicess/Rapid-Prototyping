@@ -61,6 +61,12 @@ public static class Events
     public static OnSceneFinished FinishedSceneEvent = new();
     public static OnWeaponSelectedEvent WeaponSelectedEvent = new();
     public static OnShopBuy ShopBuyEvent = new();
+
+
+    public static OnPlayerCollide PlayerCollideEvent = new();
+
+    public static OnRestartGame RestartGameEvent = new();
+
 }
 public class GameEvent { }
 public class OnScoreUpdate : GameEvent
@@ -96,6 +102,21 @@ public class OnMiniGameFinished : GameEvent
 {
     public bool IsFinished;
     public MyScenes Roulette;
+}
+
+public class OnPlayerCollide : GameEvent
+{
+}
+
+public class OnPlayerInvencible : GameEvent
+{
+}
+public class OnQuitGame : GameEvent
+{
+}
+public class OnRestartGame : GameEvent
+{
+
 }
 #region FLAPPYBIRD
 public class OnObstacleArrived : GameEvent

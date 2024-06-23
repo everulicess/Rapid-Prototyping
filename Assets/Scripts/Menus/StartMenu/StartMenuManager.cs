@@ -8,7 +8,8 @@ public enum MyScenes
 {
     Menu,
     Count,
-    Roulette
+    Roulette,
+    EndlessRunner
 }
 
 public class StartMenuManager : MonoBehaviour
@@ -44,7 +45,6 @@ public class StartMenuManager : MonoBehaviour
     {
 
     }
-
     //PLAY
     public void OnPlayClicked()
     {
