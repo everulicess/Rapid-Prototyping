@@ -33,18 +33,18 @@ public class PlateGameplayManager : MonoBehaviour
         RiflePrefab = RiflePrefab_Inspector;
         MachinegunPrefab = MachinegunPrefab_Inspector;
         SniperPrefab = SniperPrefab_Inspector;
-        EventManager.AddListener<OnPlateBrokenEvent>(IncreaeScore);
+        EventManager.AddListener<OnScoreUpdate>(IncreaeScore);
         EventManager.AddListener<OnWeaponSelectedEvent>(SetSelectedWeapon);
     }
     private void OnDestroy()
     {
-        EventManager.RemoveListener<OnPlateBrokenEvent>(IncreaeScore);
+        EventManager.RemoveListener<OnScoreUpdate>(IncreaeScore);
         EventManager.RemoveListener<OnWeaponSelectedEvent>(SetSelectedWeapon);
 
     }
-    void IncreaeScore(OnPlateBrokenEvent evt)
+    void IncreaeScore(OnScoreUpdate evt)
     {
-        highScore += evt.amountToIncrease;
+        highScore += evt.GoldIncrease;
         if (highScore >= 3)
         {
             OnSceneFinished _evt = new();

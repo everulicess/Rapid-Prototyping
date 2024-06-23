@@ -57,15 +57,15 @@ public static class EventManager
 
 public static class Events
 {
-    public static OnPlateBrokenEvent BrokenPlateEvent = new();
+    public static OnScoreUpdate UpdateScoreEvent = new();
     public static OnSceneFinished FinishedSceneEvent = new();
     public static OnWeaponSelectedEvent WeaponSelectedEvent = new();
     public static OnShopBuy ShopBuyEvent = new();
 }
 public class GameEvent { }
-public class OnPlateBrokenEvent : GameEvent
+public class OnScoreUpdate : GameEvent
 {
-    public int amountToIncrease;
+    public int GoldIncrease;
 }
 public class OnSceneFinished : GameEvent
 {
@@ -92,3 +92,15 @@ public class OnShopBuy : GameEvent
 {
     public int Price;
 }
+public class OnMiniGameFinished : GameEvent
+{
+    public bool IsFinished;
+    public MyScenes Roulette;
+}
+#region FLAPPYBIRD
+public class OnObstacleArrived : GameEvent
+{
+    public GameObject Obstacle;
+    public Vector3 InitialPosition;
+}
+#endregion

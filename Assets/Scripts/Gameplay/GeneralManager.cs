@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GeneralManager : MonoBehaviour
 {
@@ -23,10 +24,27 @@ public class GeneralManager : MonoBehaviour
     void Start()
     {
         EventManager.AddListener<OnShopBuy>(OnBuyShop);
+        EventManager.AddListener<OnScoreUpdate>(UpdateScore);
+        EventManager.AddListener<OnMiniGameFinished>(MinigameFinihsed);
+
     }
+
+    private void MinigameFinihsed(OnMiniGameFinished evt)
+    {
+        //Time.timeScale = evt.IsFinished ? 0 : 1;
+        SceneManager.LoadScene(evt.Roulette.ToString());
+    }
+
+    private void UpdateScore(OnScoreUpdate evt)
+    {
+        Gold += evt.GoldIncrease;
+    }
+
     private void OnDestroy()
     {
         EventManager.RemoveListener<OnShopBuy>(OnBuyShop);
+        EventManager.RemoveListener<OnScoreUpdate>(UpdateScore);
+
     }
     private void OnBuyShop(OnShopBuy evt)
     {

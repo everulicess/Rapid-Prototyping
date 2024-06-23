@@ -27,8 +27,8 @@ public class Plate : MonoBehaviour
     public void OnPltaeHit()
     {
         Destroy(this.gameObject);
-        OnPlateBrokenEvent evt = new();
-        evt.amountToIncrease = 2;
+        OnScoreUpdate evt = new();
+        evt.GoldIncrease = 2;
         EventManager.Broadcast(evt);
     }
 }

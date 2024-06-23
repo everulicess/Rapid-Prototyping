@@ -8,7 +8,7 @@ public enum MyScenes
 {
     Menu,
     Count,
-    Setting_1
+    Roulette
 }
 
 public class StartMenuManager : MonoBehaviour
