@@ -104,6 +104,18 @@ public class OnMiniGameFinished : GameEvent
     public MyScenes Roulette;
 }
 
+public class OnAbilityCollected : GameEvent
+{
+    public Ability UnlockedAbility;
+
+}
+public class OnAbilityActivated : GameEvent
+{
+    public Abilities abilityActive;
+    public bool isActive;
+
+}
+
 public class OnPlayerCollide : GameEvent
 {
 }

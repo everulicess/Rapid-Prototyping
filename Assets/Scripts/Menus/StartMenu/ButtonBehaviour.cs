@@ -14,7 +14,6 @@ public class ButtonBehaviour : MonoBehaviour,IPointerEnterHandler, IPointerExitH
     {
         myButton = SceneManager.GetActiveScene().name == "Menu" ? GetComponent<Button>() : GetComponentInChildren<Button>();
         myscale = myButton.transform.localScale;
-        Debug.Log($"my local scale is: {myscale}");
     }
     private void OnEnable()
     {

@@ -18,7 +18,7 @@ public class InGameMenu : MonoBehaviour
         else
         {
             Singleton = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
     public void PauseMenuToggle()

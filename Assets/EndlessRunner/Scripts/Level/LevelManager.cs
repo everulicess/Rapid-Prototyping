@@ -15,24 +15,39 @@ public class LevelManager : MonoBehaviour
     [Header("EndingScreen")]
     [SerializeField] GameObject EndScreen;
     [SerializeField] TextMeshProUGUI FinalScoreText;
+
+    [Header("Abilities")]
+    [SerializeField] GameObject ability1;
+    [SerializeField] GameObject ability2;
     void Start()
     {
         instance = this;
         EventManager.AddListener<OnScoreUpdate>(UpdateScore);
         EventManager.AddListener<OnPlayerCollide>(HandleEndScreen);
-    }
 
+        EventManager.AddListener<OnQuitGame>(QuitGame);
+    }
+    
+    private void QuitGame(OnQuitGame evt)
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
     private void HandleEndScreen(OnPlayerCollide evt)
     {
         ScorePanel.SetActive(false);
         EndScreen.SetActive(true);
         FinalScoreText.text = $"Your Score is: {score}";
     }
-
     private void OnDestroy()
     {
         EventManager.RemoveListener<OnScoreUpdate>(UpdateScore);
         EventManager.RemoveListener<OnPlayerCollide>(HandleEndScreen);
+        EventManager.RemoveListener<OnQuitGame>(QuitGame);
 
     }
     private void UpdateScore(OnScoreUpdate evt)

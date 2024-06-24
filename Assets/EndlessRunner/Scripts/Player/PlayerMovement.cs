@@ -19,15 +19,15 @@ public class PlayerMovement : MonoBehaviour
     public static bool canMove = true;
 
     Animator anim;
+
+    
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
-        Debug.Log($"can move: {canMove}");
         canMove = true;
         EventManager.AddListener<OnPlayerCollide>(OnPlayerLose);
         EventManager.AddListener<OnRestartGame>(RestartGame);
     }
-
     private void RestartGame(OnRestartGame evt)
     {
         canMove = true;
