@@ -17,7 +17,7 @@ public class CollectCoin : MonoBehaviour
 
     private void DoubleGoldActivated(OnAbilityActivated evt)
     {
-        if (evt.abilityActive != Abilities.DoubleGold)
+        if (evt.abilityActive != Abilities.Goldx2)
             return;
         goldMultiplier = evt.isActive ? 2 : 1;
     }

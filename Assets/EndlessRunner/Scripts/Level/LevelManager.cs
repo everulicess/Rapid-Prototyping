@@ -7,7 +7,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-
+    public bool isInvencible = false;
     int score = 0;
     [SerializeField] GameObject ScorePanel;
     [SerializeField] TextMeshProUGUI ScoreText;

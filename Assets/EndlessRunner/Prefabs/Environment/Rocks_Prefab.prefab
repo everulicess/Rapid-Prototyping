@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3104567265677695892}
+  - component: {fileID: 3989777960740293590}
+  - component: {fileID: 5227880918867588784}
   m_Layer: 0
   m_Name: Rocks_Prefab
   m_TagString: Obstacle
@@ -32,6 +34,39 @@ Transform:
   - {fileID: 8856973831606185581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3989777960740293590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032954121524206160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a679d82e7ffd6640bf21cd0ffb36d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5227880918867588784
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032954121524206160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8702099, y: 0.5048749, z: 0.82213974}
+  m_Center: {x: -0.016824633, y: 0.20910624, z: 0.016824722}
 --- !u!1001 &9034488838993234310
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -122,6 +122,7 @@ public class OnPlayerCollide : GameEvent
 
 public class OnPlayerInvencible : GameEvent
 {
+    public bool isShield;
 }
 public class OnQuitGame : GameEvent
 {

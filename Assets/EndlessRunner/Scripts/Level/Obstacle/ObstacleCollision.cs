@@ -13,11 +13,14 @@ public class ObstacleCollision : MonoBehaviour
 
     private void PlayerInvencible(OnPlayerInvencible evt)
     {
-        affectsPlayer = !affectsPlayer;
+        //LevelManager.instance.isInvencible = evt.isShield;
+        affectsPlayer = !evt.isShield;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //if (LevelManager.instance.isInvencible)
+        //    return;
         if (!affectsPlayer)
             return;
         EventManager.Broadcast(Events.PlayerCollideEvent);

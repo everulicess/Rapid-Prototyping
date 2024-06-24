@@ -6,11 +6,10 @@ using System;
 
 public enum Abilities
 {
-    Gun,
     Jump,
-    Invencible,
+    Shield,
     Fly,
-    DoubleGold
+    Goldx2
 }
 [Serializable]
 public class Ability
