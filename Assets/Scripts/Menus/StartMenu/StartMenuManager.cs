@@ -15,7 +15,6 @@ public enum MyScenes
 public class StartMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject CreditsPanel;
-    [SerializeField] GameObject OptionsPanel;
 
     [SerializeField] MyScenes sceneToLoad;
 
@@ -26,7 +25,6 @@ public class StartMenuManager : MonoBehaviour
     public void HideAllPanels()
     {
         CreditsPanel.SetActive(false);
-        OptionsPanel.SetActive(false);
     }
 
     //CREDITS
@@ -36,10 +34,10 @@ public class StartMenuManager : MonoBehaviour
     }
 
     //OPTIONS
-    public void OptionsPanelToggle()
-    {
-        OptionsPanel.SetActive(!OptionsPanel.activeInHierarchy);
-    }
+    //public void OptionsPanelToggle()
+    //{
+    //    OptionsPanel.SetActive(!OptionsPanel.activeInHierarchy);
+    //}
 
     public void OnVolumeChanged()
     {
@@ -54,6 +52,10 @@ public class StartMenuManager : MonoBehaviour
     //QUIT
     public void OnQuitClicked()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }
